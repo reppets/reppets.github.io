@@ -1,0 +1,33 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+}
+
+#flex-container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+#left-pane {
+	flex: 1 1 auto;
+	min-width: 100px;
+//	background-color: #ff0000;
+	resize: horizontal;
+}
+
+#right-pane {
+	flex: 6 6 auto;
+	border-left: 2px solid #000000;
+//	background-color: #00ff00;
+}
+
+.v-scroll {
+	overflow: auto scroll;
+}
