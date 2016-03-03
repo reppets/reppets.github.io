@@ -28,6 +28,11 @@ html,body {
 //	background-color: #00ff00;
 }
 
+
 .v-scroll {
 	overflow: auto scroll;
+}
+
+.content-parcel {
+	display: inline-block;
 }
