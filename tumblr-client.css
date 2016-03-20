@@ -40,7 +40,17 @@ html,body {
 }
 
 .content-parcel {
-	display: inline-block;
+	position: relative:
+	display: inline;
+}
+
+.content-photo-count {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #ffffff;
+	font-size: smaller;
 }
 
 .input-box {
@@ -72,4 +82,3 @@ html,body {
 	background-color: #cccccc;
 	color: #333333;
 }
-	
