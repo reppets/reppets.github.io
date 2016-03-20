@@ -41,7 +41,7 @@ html,body {
 
 .content-parcel {
 	position: relative:
-	display: inline;
+	display: table;
 }
 
 .content-photo-count {
