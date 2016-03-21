@@ -66,6 +66,7 @@ html,body {
 	position: fixed;
 	display: none;
 	z-index: 1;
+	pointer-events: none;
 }
 
 .input-box {
