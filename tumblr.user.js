@@ -16,7 +16,7 @@ var Tumblr = function(consumer_key, consumer_secret, logLevel) {
 		consumer: { public: consumer_key, secret: consumer_secret },
 		signature_method:'HMAC-SHA1'
 	});
-	this.logLevel = logLevel ? logLevel : Tumblr.log.NONE;
+	this.logLevel = logLevel ? logLevel : Tumblr.LOG_NONE;
 };
 
 Tumblr.AUTHORIZE_URL = 'https://www.tumblr.com/oauth/authorize';
@@ -113,7 +113,7 @@ Tumblr.prototype.getAccessToken = function(token, args) {
  * required properties for args:
  *   blogID: blog identifier (e.g. 'example.tumblr.com')
  */
-Tumblr.prototype.getBlogInfo = Tumblr.log(function(blogID, args) {
+Tumblr.prototype.getBlogInfo = Tumblr._log(function(blogID, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/info';
 	args.method = 'GET';
 	return this.requestApiKey(args);
@@ -125,7 +125,7 @@ Tumblr.prototype.getBlogInfo = Tumblr.log(function(blogID, args) {
  * optional properties for args:
  *   size: avatar size (must be one of 16, 24, 30, 40, 48, 64, 96, 128, 512, default: 64)
  */
-Tumblr.prototype.getAvatar = Tumblr.log(function(blogID, params, args) {
+Tumblr.prototype.getAvatar = Tumblr._log(function(blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/avatar' + this.parameterize(params, true);
 	args.method = 'GET';
 	return GM_xmlhttpRequest(args);
@@ -139,19 +139,19 @@ Tumblr.prototype.getAvatar = Tumblr.log(function(blogID, params, args) {
  *   before: retrieves posts before this timestamp.
  *   after: retrieves posts after this timestamp.
  */
-Tumblr.prototype.getLikes = Tumblr.log(function(blogID, params, args) {
+Tumblr.prototype.getLikes = Tumblr._log(function(blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/likes' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestApiKey(args);
 });
 
-Tumblr.prototype.getFollowers = Tumblr.log(function(token, blogID, params, args) {
+Tumblr.prototype.getFollowers = Tumblr._log(function(token, blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/followers' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.getPosts = Tumblr.log(function(blogID, params, args) {
+Tumblr.prototype.getPosts = Tumblr._log(function(blogID, params, args) {
 	var realParams = $.extend({}, params);
 	delete realParams.type;
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/posts' + (params.type ? '/'+params.type : '') + this.parameterize(realParams, true);
@@ -159,53 +159,53 @@ Tumblr.prototype.getPosts = Tumblr.log(function(blogID, params, args) {
 	return this.requestApiKey(args);
 });
 
-Tumblr.prototype.getDrafts = Tumblr.log(function(token, blogID, params, args) {
+Tumblr.prototype.getDrafts = Tumblr._log(function(token, blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/posts/draft' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.getSubmissions = Tumblr.log(function(token, blogID, params, args) {
+Tumblr.prototype.getSubmissions = Tumblr._log(function(token, blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/posts/submission' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.post = Tumblr.log(function(token, blogID, params, args) {
+Tumblr.prototype.post = Tumblr._log(function(token, blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID +'/post';
 	args.method = 'POST';
 	args.data = params;
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.edit = Tumblr.log(function(token, blogID, params, args) {
+Tumblr.prototype.edit = Tumblr._log(function(token, blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/post/edit';
 	args.method = 'POST';
 	args.data = params;
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.reblog = Tumblr.log(function(token, blogID, params, args) {
+Tumblr.prototype.reblog = Tumblr._log(function(token, blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/post/reblog';
 	args.method = 'POST';
 	args.data = params;
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.delete = Tumblr.log(function(token, blogID, params, args) {
+Tumblr.prototype.delete = Tumblr._log(function(token, blogID, params, args) {
 	args.url = 'https://api.tumblr.com/v2/blog/' + blogID + '/post/delete';
 	args.method = 'POST';
 	args.data = params;
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.getUserInfo = Tumblr.log(function(token, args) {
+Tumblr.prototype.getUserInfo = Tumblr._log(function(token, args) {
 	args.url = 'https://api.tumblr.com/v2/user/info';
 	args.method = 'GET';
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.getUserDashboard = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.getUserDashboard = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/user/dashboard' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestOAuth(args, token);
@@ -218,7 +218,7 @@ Tumblr.prototype.getUserDashboard = Tumblr.log(function(token, params, args) {
  *   before
  *   after
  */
-Tumblr.prototype.getUserLikes = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.getUserLikes = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/user/dashboard' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestOAuth(args, token);
@@ -229,7 +229,7 @@ Tumblr.prototype.getUserLikes = Tumblr.log(function(token, params, args) {
  *   limit
  *   offset
  */
-Tumblr.prototype.getUserFollowing = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.getUserFollowing = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/user/following' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestOAuth(args, token);
@@ -239,7 +239,7 @@ Tumblr.prototype.getUserFollowing = Tumblr.log(function(token, params, args) {
  * accepted keys for params:
  *   url
  */
-Tumblr.prototype.follow = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.follow = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/user/follow';
 	args.method = 'POST';
 	args.data = params;
@@ -250,28 +250,28 @@ Tumblr.prototype.follow = Tumblr.log(function(token, params, args) {
  * accepted keys for params:
  *   url
  */
-Tumblr.prototype.unfollow = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.unfollow = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/user/unfollow';
 	args.method = 'POST';
 	args.data = params;
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.like = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.like = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/user/like';
 	args.method = 'POST';
 	args.data = params;
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.unlike = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.unlike = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/user/unlike';
 	args.method = 'POST';
 	args.data = params;
 	return this.requestOAuth(args, token);
 });
 
-Tumblr.prototype.getTagged = Tumblr.log(function(token, params, args) {
+Tumblr.prototype.getTagged = Tumblr._log(function(token, params, args) {
 	args.url = 'https://api.tumblr.com/v2/tagged' + this.parameterize(params, true);
 	args.method = 'GET';
 	return this.requestApiKey(args, token);
