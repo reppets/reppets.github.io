@@ -21,20 +21,20 @@ var Tumblr = function(consumer_key, consumer_secret, logLevel) {
 
 Tumblr.AUTHORIZE_URL = 'https://www.tumblr.com/oauth/authorize';
 
-Tumblr.log.NONE = 2;
-Tumblr.log.ERROR = 1;
-Tumblr.log.DEBUG = 0;
+Tumblr.LOG_NONE = 2;
+Tumblr.LOG_ERROR = 1;
+Tumblr.LOG_DEBUG = 0;
 
 Tumblr._log = function(targetFunction) {
 	self = this;
 	return function() {
-		if (self.logLevel <= Tumblr.log.DEBUG) {
+		if (self.logLevel <= Tumblr.LOG_DEBUG) {
 			console.log(arguments);
 		}
 		try {
 			return targetFunction.apply(this, arguments);
 		} catch(e) {
-			if (self.logLevel <= Tumblr.log.ERROR) {
+			if (self.logLevel <= Tumblr.LOG_ERROR) {
 				console.log(e);
 			}
 			throw e;
