@@ -1,0 +1,102 @@
+---
+---
+
+// https://designschool.canva.com/blog/100-color-combinations/
+//44. Wintery Reds
+//85. Classic Metallics
+$dummy: 0;
+$base-bg: #f0feff;
+$contrast-bg: #0e1318;
+$base-color: #3e5368;
+$lighter-color: $base-color * 1.5;
+$pale-color: #c0b2b5;
+$headline: #afc7d3;
+$headline-bg: #c8ac8d;
+$dool: #594d46;
+$deel: #d1b280;
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background-color: $base-bg;
+	color: #080706;
+}
+
+pre {
+	border: 1px solid grey;
+	padding: 12px;
+	margin: {
+		left: 2em;
+	}
+}
+
+a {
+	color: $lighter-color;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.headline {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background-color: $contrast-bg;
+	> span {
+		color: $base-bg;
+		margin-left: 10px;
+		vertical-align: middle;
+		font: {
+			family: 'Didact Gothic', sans-serif;
+			size: 30pt;
+		}
+	}
+}
+.headicon {
+	font: {
+		family: 'Didact Gothic', sans-serif;
+		size: 30pt;
+	}
+	height: 3ex;
+	background-color: $base-bg;
+	vertical-align: bottom;
+}
+.content {
+	background-color: $base-bg;
+	height: 100%;
+	margin: {
+		top: 10px;
+		left: 1.5em;
+		bottom: 0;
+		right: 0;
+	}
+	padding: {
+		top: 7px;
+		left: 1em;
+	}
+}
+
+:not(pre)>code {
+	border: 1px solid grey;
+}
+
+.article-body {
+	max-width: 80em;
+	border: 1px solid grey;
+	padding: 1.5em;
+	margin: {
+		left: 2em;
+		right: 2em;
+	}
+}
+
