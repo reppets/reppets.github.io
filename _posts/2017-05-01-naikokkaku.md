@@ -18,6 +18,9 @@ def configure(window):
 
 ```python 
 # config.py
+import ckit
+from ckit.ckit_const import *
+
 def configure(window):
     original_delitem = ckit.Keymap.__delitem__
     def monkeypatch_delitem(self, expression):
@@ -31,7 +34,7 @@ def configure(window):
     del window.keymap[ckit.KeyEvent(ord('M'),0,extra=1)]
     del window.keymap[ckit.KeyEvent(ord('M'),MODKEY_SHIFT,extra=1)] # S-Mも変えたい場合は必要
     
-    window.keymap["M"]=window_commandJumpList # 好きなコマンドに差し替え
+    window.keymap["M"]=window.command_JumpList # 好きなコマンドに差し替え
 ```
 
 ## なぜ? (細かい話)

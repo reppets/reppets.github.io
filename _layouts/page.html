@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
 	<head>
-		<title>{% if page.title %}{{ page.title }} - {% endif %}reppets.net</title>
-		{% include style.html %}
-		{% include tracker.html %}
-		<link rel="shortcut icon" href="/assets/caticon.png">
+		{% include head.html ogtype="website" %}
 	</head>
 	<body>
-		<div class="headline"><a href="/"><img class="headicon" src="/assets/caticon.svg"></a><span>reppets.net</span></div>
-		<div class="content">{{ content }}</div>
+		<div class="page-container">
+			{% include headline.html %}
+			<div class="content">{{ content }}</div>
+			{% include footer.html %}
+		</div>
 	</body>
 </html>

@@ -3,20 +3,20 @@ layout: page
 ---
 
 Articles
----------------
+========
 
-### Recent articles
+<!-- ### Recent articles -->
 <ul>
 {% for post in site.posts limit: 7 %}
   <li><span class="date">{{ post.date | date: "%Y-%m-%d" }}</span> <a href="{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
 
-### [Archive](/blog/archive.html)
+<!-- ### [Archive](/blog/archive.html) -->
 
 
 Social Accounts
----------------
+===============
 
 * [Twitter](https://twitter.com/reppets)
 * [Github](https://github.com/reppets/)

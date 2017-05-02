@@ -1,21 +1,14 @@
 ---
 ---
 
-// https://designschool.canva.com/blog/100-color-combinations/
-//44. Wintery Reds
-//85. Classic Metallics
-$dummy: 0;
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
 $base-bg: #f0feff;
 $contrast-bg: #0e1318;
 $base-color: #3e5368;
-$lighter-color: $base-color * 1.5;
-$pale-color: #c0b2b5;
-$headline: #afc7d3;
-$headline-bg: #c8ac8d;
-$dool: #594d46;
-$deel: #d1b280;
-@import url('https://fonts.googleapis.com/css?family=Inconsolata');
-@import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+$lighter-color: #5d7d9d;
+$bright-color: #e8f0f3;
+
 html {
 	height: 100%;
 	width: 100%;
@@ -28,14 +21,24 @@ body {
 	border: 0;
 	padding: 0;
 	background-color: $base-bg;
-	color: #080706;
+	color: $contrast-bg;
+	font: {
+		family: 'Meiryo', sans-serif;
+		weight: normal;
+		size: 12pt;
+	}
 }
 
 pre {
-	border: 1px solid grey;
+	border: 1px solid $lighter-color;
+	background-color: $bright-color;
+	border-radius: 2px;
 	padding: 12px;
 	margin: {
-		left: 2em;
+		top: 1ex;
+		bottom: 1ex;
+		left: 0;
+		right: 0;
 	}
 }
 
@@ -47,18 +50,85 @@ a {
 	}
 }
 
+
+h1 {
+	margin: {
+		top: 2.5ex;
+		bottom: 15px;
+	}
+	font: {
+		size: 20pt;
+	}
+	border: {
+		bottom: 1px solid $lighter-color;
+		left: 5px solid $lighter-color;
+	}
+	padding: {
+		left: 10px;
+	}
+}
+
+h2 {
+	font: {
+		size: 18pt;
+	}
+	margin: {
+		top: 2.5ex;
+		bottom: 1ex;
+	}
+}
+
+code {
+	font: {
+		family: 'Inconsolata','Meiryo', sans-serif;
+	}
+}
+
+:not(pre)>code {
+	border: 1px solid grey;
+	border-radius: 2px;
+  border-color: $lighter-color;
+	margin: {
+		left: 2px;
+		right: 2px;
+	}
+	padding: {
+		left: 2px;
+		right: 2px;
+	}
+	background-color: $bright-color;
+}
+
+.page-container {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	min-height: 100%;
+}
+
 .headline {
 	display: flex;
 	width: 100%;
 	align-items: center;
 	background-color: $contrast-bg;
-	> span {
-		color: $base-bg;
+	color: $base-bg;
+	span {
 		margin-left: 10px;
 		vertical-align: middle;
 		font: {
 			family: 'Didact Gothic', sans-serif;
 			size: 30pt;
+		}
+	}
+	a {
+		text-decoration: none;
+		color: $base-bg;
+		&:hover {
+			text-decoration: none;
+			color: $lighter-color;
 		}
 	}
 }
@@ -73,30 +143,38 @@ a {
 }
 .content {
 	background-color: $base-bg;
-	height: 100%;
-	margin: {
-		top: 10px;
-		left: 1.5em;
-		bottom: 0;
-		right: 0;
-	}
+	flex-grow:1;
+
 	padding: {
-		top: 7px;
-		left: 1em;
+		top: 20px;
+		left: 45px;
+		right: 45px;
+		bottom: 50px;
 	}
 }
 
-:not(pre)>code {
-	border: 1px solid grey;
+.article-date {
+	padding: 0 0 0 18px;
+	font-size: 10pt;
+	margin-top: -15px;
 }
 
 .article-body {
 	max-width: 80em;
-	border: 1px solid grey;
-	padding: 1.5em;
 	margin: {
-		left: 2em;
-		right: 2em;
+		top: 10px;
+		left: 0;
+		bottom: 0;
+		right: 0;
 	}
+	padding: 0 20px;
+}
+
+.footer {
+	font-size: 10pt;
+	text-align: right;
+	background-color: $contrast-bg;
+	color: $base-bg;
+	padding: 5px 15px;
 }
 
