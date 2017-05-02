@@ -4,12 +4,12 @@ title: ファイラー内骨格でMキーのアサインを変更する
 
 ## ほかのキーと同じように再アサインできない'M'キー
 
-ファイラーとして、2画面キーボードファイラーの[内骨格](https://sites.google.com/site/craftware/cfiler)を愛用しているのですが、Mキーの再アサインがver. 2.45現在、ほかのキーと同じように再アサインしようとしても、できない状態になっています(私の環境ではファイル非選択状態だとデフォルト動作が、選択状態だと設定変更した動作になりました)。
+ファイラーとして、2画面キーボードファイラーの[内骨格](https://sites.google.com/site/craftware/cfiler)を愛用しているのですが、Mキーの再アサインがver. 2.45現在、ほかのキーと同じように再アサインしようとしても、できない状態になっています(私の環境ではファイル非選択状態だとデフォルト動作が、選択状態だと設定変更した動作になりました)。(Githubには[イシュー](https://github.com/crftwr/cfiler/issues/5)をあげました。）
 
 ```python
 # config.py (正常動作しない)
 def configure(window):
-    window.keymap["M"]=window_commandJumpList
+    window.keymap["M"]=window.command_JumpList
 ```
 
 ## Mキーの再アサインをする
